@@ -2,13 +2,10 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include <math.h>
-//#define ROW 20
-//#define COL 31
 
 int main(int argc, char * argv[])
 {
 	FILE * in, * out;
-//	int data[ROW][COL];
 	int i, j, ROW, COL;
 	float ave;
 	char ch;
@@ -50,7 +47,7 @@ int main(int argc, char * argv[])
 						}
 				}
 		}
-	for (i = 1; i < ROW - 1; i++)               //´¦ÀíÄÚ²ãÍ¼ÏñÊ§Õæ
+	for (i = 1; i < ROW - 1; i++)               //å¤„ç†å†…å±‚å›¾åƒå¤±çœŸ
 		{
 			for (j = 1; j < COL - 1; j++)
 				{
@@ -61,7 +58,7 @@ int main(int argc, char * argv[])
 						}
 				}
 		}
-	for (i = 0, j = 1; j < COL - 1; j++)        //´¦Àí¶¥²¿Í¼ÏñÊ§Õæ
+	for (i = 0, j = 1; j < COL - 1; j++)        //å¤„ç†é¡¶éƒ¨å›¾åƒå¤±çœŸ
 		{
 			if (abs(data[i][j-1] - data[i][j]) > 1 && abs(data[i][j+1] - data[i][j]) > 1 && abs(data[i+1][j] - data[i][j]) > 1)
 				{
@@ -69,7 +66,7 @@ int main(int argc, char * argv[])
 					data[i][j] = round(ave);
 				}
 		}
-	for (i = ROW - 1, j = 1; j < COL - 1; j++)  //´¦Àíµ×²¿Í¼ÏñÊ§Õæ
+	for (i = ROW - 1, j = 1; j < COL - 1; j++)  //å¤„ç†åº•éƒ¨å›¾åƒå¤±çœŸ
 		{
 			if (abs(data[i][j-1] - data[i][j]) > 1 && abs(data[i][j+1] - data[i][j]) > 1 && abs(data[i-1][j] - data[i][j]) > 1)
 				{
@@ -77,7 +74,7 @@ int main(int argc, char * argv[])
 					data[i][j] = round(ave);
 				}
 		}
-	for (i = 1, j = 0; i < ROW - 1; i++)        //´¦Àí×ó²àÍ¼ÏñÊ§Õæ
+	for (i = 1, j = 0; i < ROW - 1; i++)        //å¤„ç†å·¦ä¾§å›¾åƒå¤±çœŸ
 		{
 			if (abs(data[i-1][j] - data[i][j]) > 1 && abs(data[i+1][j] - data[i][j]) > 1 && abs(data[i][j+1] - data[i][j]) > 1)
 				{
@@ -85,7 +82,7 @@ int main(int argc, char * argv[])
 					data[i][j] = round(ave);
 				}
 		}
-	for (i = 1, j = COL - 1; i < ROW - 1; i++)  //´¦ÀíÓÒ²àÍ¼ÏñÊ§Õæ
+	for (i = 1, j = COL - 1; i < ROW - 1; i++)  //å¤„ç†å³ä¾§å›¾åƒå¤±çœŸ
 		{
 			if (abs(data[i-1][j] - data[i][j]) > 1 && abs(data[i+1][j] - data[i][j]) > 1 && abs(data[i][j-1] - data[i][j]) > 1)
 				{
@@ -93,22 +90,22 @@ int main(int argc, char * argv[])
 					data[i][j] = round(ave);
 				}
 		}
-	if (abs(data[1][0] - data[0][0]) > 1 && abs(data[0][1] - data[0][0]) > 1)                                           //´¦Àí×óÉÏ¶¥µãÍ¼ÏñÊ§Õæ
+	if (abs(data[1][0] - data[0][0]) > 1 && abs(data[0][1] - data[0][0]) > 1)                                           //å¤„ç†å·¦ä¸Šé¡¶ç‚¹å›¾åƒå¤±çœŸ
 		{
 			ave = (data[1][0] + data[0][1]) / 2;
 			data[0][0] = round(ave);
 		}
-	if (abs(data[1][COL-1] - data[0][COL-1]) > 1 && abs(data[0][COL-2] - data[0][COL-1]) > 1)                           //´¦ÀíÓÒÉÏ¶¥µãÍ¼ÏñÊ§Õæ
+	if (abs(data[1][COL-1] - data[0][COL-1]) > 1 && abs(data[0][COL-2] - data[0][COL-1]) > 1)                           //å¤„ç†å³ä¸Šé¡¶ç‚¹å›¾åƒå¤±çœŸ
 		{
 			ave = (data[1][COL-1] + data[0][COL-2]) / 2;
 			data[0][COL-1] = round(ave);
 		}
-	if (abs(data[ROW-1][1] - data[ROW-1][0]) > 1 && abs(data[ROW-2][0] - data[ROW-1][0]) > 1)                           //´¦Àí×óÏÂ¶¥µãÍ¼ÏñÊ§Õæ
+	if (abs(data[ROW-1][1] - data[ROW-1][0]) > 1 && abs(data[ROW-2][0] - data[ROW-1][0]) > 1)                           //å¤„ç†å·¦ä¸‹é¡¶ç‚¹å›¾åƒå¤±çœŸ
 		{
 			ave = (data[ROW-1][1] + data[ROW-2][0]) / 2;
 			data[ROW-1][0] = round(ave);
 		}
-	if (abs(data[ROW-1][COL-2] - data[ROW-1][COL-1]) > 1 && abs(data[ROW-2][COL-1] - data[ROW-1][COL-1]) > 1)           //´¦ÀíÓÒÏÂ¶¥µãÍ¼ÏñÊ§Õæ
+	if (abs(data[ROW-1][COL-2] - data[ROW-1][COL-1]) > 1 && abs(data[ROW-2][COL-1] - data[ROW-1][COL-1]) > 1)           //å¤„ç†å³ä¸‹é¡¶ç‚¹å›¾åƒå¤±çœŸ
 		{
 			ave = (data[ROW-1][COL-2] + data[ROW-2][COL-1]) / 2;
 			data[ROW-1][COL-1] = round(ave);
